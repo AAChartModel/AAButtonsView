@@ -16,15 +16,20 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
 @protocol AAButtonsViewDelegate <NSObject>
 
 @required
-- (void)aaButtonsViewDidSelectedButtonWithTheTag:(NSInteger)selectedButtonTag;
+- (void)aaButtonsViewDidSelectedButtonWithTheButton:(UIButton *)selectedButton;
 
 @end
 
 @interface AAButtonsView : UIView
 
 @property (nonatomic, strong) UIColor *buttonsColor;
-@property (nonatomic, strong) NSArray *titlesArr;
+@property (nonatomic, strong) NSArray *normalBtnTitlesArr;
+@property (nonatomic, strong) NSArray *selectedBtnTitlesArr;
 @property (nonatomic, assign) AAButtonsViewLayoutType layoutType;
 @property (nonatomic, weak) id<AAButtonsViewDelegate> delegate;
+
+@property (nonatomic, strong) UIColor *btnSelectedColor;
+@property (nonatomic, assign) CGFloat btnLayerCornerRadius;
+@property (nonatomic, assign) CGFloat btnFontSize;
 
 @end
