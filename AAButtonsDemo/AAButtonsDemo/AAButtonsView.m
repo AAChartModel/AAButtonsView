@@ -8,7 +8,6 @@
 
 #import "AAButtonsView.h"
 #define AAScreenWidth    [UIScreen mainScreen].bounds.size.width
-#define AppBaseColor      [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]//app主色调
 @implementation AAButtonsView {
     
 }
@@ -41,16 +40,16 @@
 - (void)setNormalBtnTitlesArr:(NSArray *)normalBtnTitlesArr {
     if (_normalBtnTitlesArr != normalBtnTitlesArr) {
         _normalBtnTitlesArr = normalBtnTitlesArr;
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self setUpTheOriginalView];
     }
 }
 
 - (void)SetUpBasicStyle {
     self.btnLayerCornerRadius = 3;
-    self.btnSelectedColor = AppBaseColor;
+    self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
     self.btnFontSize = 11;
-   
-}
+ }
 
 
 - (void)setUpTheOriginalView {
@@ -71,7 +70,17 @@
                 btnX = 20;
                 btnY += 35;
             }
-            UIButton *button = [self configureTheButtonsWithButtonX:btnX buttonY:btnY buttonWidth:btnWidth buttonTitle:self.normalBtnTitlesArr[i] buttonTag:i];
+            NSString *btnTitle = self.normalBtnTitlesArr[i];
+            BOOL selected = NO;
+            if (self.selectedBtnTitlesArr && [self.selectedBtnTitlesArr containsObject:btnTitle]) {
+                selected = YES;
+            }
+            UIButton *button = [self configureTheButtonsWithButtonX:btnX
+                                                            buttonY:btnY
+                                                        buttonWidth:btnWidth
+                                                        buttonTitle:btnTitle
+                                                     buttonSelected:selected
+                                                          buttonTag:i];
             btnX = CGRectGetMaxX(button.frame)+10;
             
             
@@ -82,15 +91,31 @@
         for(int i = 0; i < self.normalBtnTitlesArr.count; i++){
             
             //宽度自适应
-            NSDictionary *fontDict = @{NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]};
-            CGRect frame_W = [self.normalBtnTitlesArr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDict context:nil];
+            NSDictionary *fontDict = @{
+                                       NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]
+                                       };
+            CGRect frame_W = [self.normalBtnTitlesArr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                                                   attributes:fontDict
+                                                                      context:nil];
             
             if (btnX+frame_W.size.width+20>AAScreenWidth-15) {
                 btnX = 15;
                 btnY += 55;
             }
+            NSString *btnTitle = self.normalBtnTitlesArr[i];
             
-            UIButton *button =  [self configureTheButtonsWithButtonX:btnX buttonY:btnY buttonWidth:frame_W.size.width buttonTitle:self.normalBtnTitlesArr[i] buttonTag:i];
+            BOOL selected = NO;
+            if (self.selectedBtnTitlesArr && [self.selectedBtnTitlesArr containsObject:btnTitle]) {
+                selected = YES;
+            }
+            
+            UIButton *button =  [self configureTheButtonsWithButtonX:btnX
+                                                             buttonY:btnY
+                                                         buttonWidth:frame_W.size.width
+                                                         buttonTitle:btnTitle
+                                                      buttonSelected:selected
+                                                           buttonTag:i];
             btnX = CGRectGetMaxX(button.frame)+10;
             
         }
@@ -103,6 +128,7 @@
                                      buttonY:(CGFloat)btnY
                                  buttonWidth:(CGFloat)btnWidth
                                  buttonTitle:(NSString *)btnTitle
+                              buttonSelected:(BOOL)btnSelected
                                    buttonTag:(NSInteger)btnTag {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(btnX, btnY, btnWidth, 25);
@@ -114,23 +140,36 @@
     btn.layer.masksToBounds = YES;
     [btn.layer setBorderColor:[[UIColor  grayColor] CGColor]];//边框颜色
     [btn.layer setBorderWidth:0.5]; //边框宽度
-    [btn addTarget:self action:@selector(sonChoicesNameButtonsClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(buttonOfAAButtonsViewWasClicked:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = btnTag;
     [self addSubview:btn];
+    if (btnSelected == YES) {
+        [self changeTheSelectedButtonStyleWithSelectedButton:btn];
+    }
     return btn;
 }
 
-- (void)sonChoicesNameButtonsClicked:(UIButton *)sender {
-    if (sender.selected == NO) {
-        sender.backgroundColor = self.btnSelectedColor;
-        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [sender.layer setBorderColor:[self.btnSelectedColor CGColor]];
+- (void)buttonOfAAButtonsViewWasClicked:(UIButton *)sender {
+    [self changeTheSelectedButtonStyleWithSelectedButton:sender];
+    if (self.selectedBtnBlock) {
+        self.selectedBtnBlock(sender);
     } else {
-        sender.backgroundColor = [UIColor whiteColor];
-        [sender setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [sender.layer setBorderColor:[[UIColor grayColor] CGColor]];
+        [self.selectedBtnDelegate aa_buttonsViewDidSelectedButtonWithTheButton:sender];
     }
-    sender.selected = !sender.selected;
+    
+}
+
+- (void)changeTheSelectedButtonStyleWithSelectedButton:(UIButton *)selectedBtn {
+    if (selectedBtn.selected == NO) {
+        selectedBtn.backgroundColor = self.btnSelectedColor;
+        [selectedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [selectedBtn.layer setBorderColor:[self.btnSelectedColor CGColor]];
+    } else {
+        selectedBtn.backgroundColor = [UIColor whiteColor];
+        [selectedBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [selectedBtn.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    }
+        selectedBtn.selected = !selectedBtn.selected;
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^AAButtonsViewSelectedButtonBlock)(UIButton *button);
 typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
     AAButtonsViewLayoutTypeOrderly = 0,
     AAButtonsViewLayoutTypeStaggered
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
 @protocol AAButtonsViewDelegate <NSObject>
 
 @required
-- (void)aaButtonsViewDidSelectedButtonWithTheButton:(UIButton *)selectedButton;
+- (void)aa_buttonsViewDidSelectedButtonWithTheButton:(UIButton *)selectedButton;
 
 @end
 
@@ -26,7 +26,8 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
 @property (nonatomic, strong) NSArray *normalBtnTitlesArr;
 @property (nonatomic, strong) NSArray *selectedBtnTitlesArr;
 @property (nonatomic, assign) AAButtonsViewLayoutType layoutType;
-@property (nonatomic, weak) id<AAButtonsViewDelegate> delegate;
+@property (nonatomic, copy) AAButtonsViewSelectedButtonBlock selectedBtnBlock;
+@property (nonatomic, weak) id<AAButtonsViewDelegate> selectedBtnDelegate;
 
 @property (nonatomic, strong) UIColor *btnSelectedColor;
 @property (nonatomic, assign) CGFloat btnLayerCornerRadius;
