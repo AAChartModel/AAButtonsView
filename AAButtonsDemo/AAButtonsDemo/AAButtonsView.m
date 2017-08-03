@@ -36,14 +36,15 @@
     return self;
 }
 
-
-- (void)setNormalBtnTitlesArr:(NSArray *)normalBtnTitlesArr {
-    if (_normalBtnTitlesArr != normalBtnTitlesArr) {
-        _normalBtnTitlesArr = normalBtnTitlesArr;
+- (void)setBtnsTitleArr:(NSArray *)btnsTitleArr {
+    if (_btnsTitleArr != btnsTitleArr) {
+        _btnsTitleArr = btnsTitleArr;
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self setUpTheOriginalView];
     }
 }
+
+
 
 - (void)SetUpBasicStyle {
     self.btnLayerCornerRadius = 3;
@@ -58,7 +59,7 @@
     if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
         btnX = 20;
         btnY = 20;
-        for(int i = 0; i < self.normalBtnTitlesArr.count; i++) {
+        for(int i = 0; i < self.btnsTitleArr.count; i++) {
             //宽度自适应
             CGFloat btnWidth;
             if (AAScreenWidth>320) {
@@ -70,9 +71,9 @@
                 btnX = 20;
                 btnY += 35;
             }
-            NSString *btnTitle = self.normalBtnTitlesArr[i];
+            NSString *btnTitle = self.btnsTitleArr[i];
             BOOL selected = NO;
-            if (self.selectedBtnTitlesArr && [self.selectedBtnTitlesArr containsObject:btnTitle]) {
+            if (self.selectedBtnsTitleArr && [self.selectedBtnsTitleArr containsObject:btnTitle]) {
                 selected = YES;
             }
             UIButton *button = [self configureTheButtonsWithButtonX:btnX
@@ -88,13 +89,13 @@
     }else {
         btnX = 15;
         btnY = 17+10;
-        for(int i = 0; i < self.normalBtnTitlesArr.count; i++){
+        for(int i = 0; i < self.btnsTitleArr.count; i++){
             
             //宽度自适应
             NSDictionary *fontDict = @{
                                        NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]
                                        };
-            CGRect frame_W = [self.normalBtnTitlesArr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+            CGRect frame_W = [self.btnsTitleArr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                                    attributes:fontDict
                                                                       context:nil];
@@ -103,10 +104,10 @@
                 btnX = 15;
                 btnY += 55;
             }
-            NSString *btnTitle = self.normalBtnTitlesArr[i];
+            NSString *btnTitle = self.btnsTitleArr[i];
             
             BOOL selected = NO;
-            if (self.selectedBtnTitlesArr && [self.selectedBtnTitlesArr containsObject:btnTitle]) {
+            if (self.selectedBtnsTitleArr && [self.selectedBtnsTitleArr containsObject:btnTitle]) {
                 selected = YES;
             }
             
