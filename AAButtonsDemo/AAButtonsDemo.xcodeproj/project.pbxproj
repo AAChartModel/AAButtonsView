@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27746B1C1F39D42C009354A7 /* AAGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27746B1B1F39D42C009354A7 /* AAGeneralTableViewCell.m */; };
 		277A0E421F3060B500F6E9CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E411F3060B500F6E9CB /* main.m */; };
 		277A0E451F3060B500F6E9CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E441F3060B500F6E9CB /* AppDelegate.m */; };
 		277A0E481F3060B500F6E9CB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E471F3060B500F6E9CB /* ViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27746B1A1F39D42C009354A7 /* AAGeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAGeneralTableViewCell.h; sourceTree = "<group>"; };
+		27746B1B1F39D42C009354A7 /* AAGeneralTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAGeneralTableViewCell.m; sourceTree = "<group>"; };
 		277A0E3D1F3060B500F6E9CB /* AAButtonsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAButtonsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A0E411F3060B500F6E9CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		277A0E431F3060B500F6E9CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				277A0E471F3060B500F6E9CB /* ViewController.m */,
 				277A0E731F30610600F6E9CB /* AAButtonsView.h */,
 				277A0E741F30610600F6E9CB /* AAButtonsView.m */,
+				27746B1A1F39D42C009354A7 /* AAGeneralTableViewCell.h */,
+				27746B1B1F39D42C009354A7 /* AAGeneralTableViewCell.m */,
 				277A0E491F3060B600F6E9CB /* Main.storyboard */,
 				277A0E4C1F3060B600F6E9CB /* Assets.xcassets */,
 				277A0E4E1F3060B600F6E9CB /* LaunchScreen.storyboard */,
@@ -279,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				277A0E481F3060B500F6E9CB /* ViewController.m in Sources */,
+				27746B1C1F39D42C009354A7 /* AAGeneralTableViewCell.m in Sources */,
 				277A0E451F3060B500F6E9CB /* AppDelegate.m in Sources */,
 				277A0E751F30610600F6E9CB /* AAButtonsView.m in Sources */,
 				277A0E421F3060B500F6E9CB /* main.m in Sources */,
@@ -515,6 +521,7 @@
 				277A0E6C1F3060B600F6E9CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277A0E6D1F3060B600F6E9CB /* Build configuration list for PBXNativeTarget "AAButtonsDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +530,7 @@
 				277A0E6F1F3060B600F6E9CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277A0E701F3060B600F6E9CB /* Build configuration list for PBXNativeTarget "AAButtonsDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +539,7 @@
 				277A0E721F3060B600F6E9CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
