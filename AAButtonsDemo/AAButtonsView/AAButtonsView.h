@@ -10,7 +10,7 @@
 typedef void(^AAButtonsViewSelectedButtonBlock)(UIButton *button);
 typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
     AAButtonsViewLayoutTypeOrderly = 0,//左右上下对齐
-    AAButtonsViewLayoutTypeStaggered   //参差错落布局
+    AAButtonsViewLayoutTypeStaggerly   //参差错落布局
 };
 
 @protocol AAButtonsViewDelegate <NSObject>
@@ -60,5 +60,10 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
  按钮的字体大小
  */
 @property (nonatomic, assign) CGFloat btnFontSize;
+
+/**
+ 按钮字体颜色
+ */
+@property (nonatomic, strong) UIColor *btnTextColor;
 
 @end

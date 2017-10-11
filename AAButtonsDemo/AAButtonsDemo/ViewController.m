@@ -8,7 +8,12 @@
 
 #import "ViewController.h"
 #import "AAButtonsView.h"
-@interface ViewController ()<AAButtonsViewDelegate>
+#import "SecondViewController.h"
+#define AAGrayColor [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1.0]
+@interface ViewController ()<AAButtonsViewDelegate,UITableViewDelegate,UITableViewDataSource> {
+    UITableView *_tableView;
+}
+@property (nonatomic, strong) NSArray *cellTitleArr;
 
 @end
 
@@ -16,31 +21,103 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title =@"AAButtonsView";
     
-    AAButtonsView *btnsView = [[AAButtonsView alloc]init];
-    btnsView.selectedBtnDelegate = self;
-            NSArray *tarr = @[@"AAChartKit",@"AAChartKit-Swift",@"AAButtonsView",@"XcodeHelp-CHINESE",@"AACategory",@"AAMapKit",@"AAChartKit-Slim",@"AATextWatchdog",@"社交恐惧",@"家庭矛盾",@"失恋",@"局势很简单",@"Word",@"美女",@"美女与野兽",@"体育",@"生化危机"];
-                NSArray *seletedArr = @[@"盗墓笔记",@"空空道人谈股市",@"叶文有话要说",@"相声",@"二货一箩筐",@"单田方",@"城市",@"美女",@"社交恐惧",@"家庭矛盾",@"失恋",@"局势很简单",@"Word",@"美女",@"美女与野兽",@"体育",@"生化危机"];
-    btnsView.layoutType = AAButtonsViewLayoutTypeStaggered;
-    btnsView.selectedBtnsTitleArr = seletedArr;
-    btnsView.btnsTitleArr = tarr;
-    btnsView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    btnsView.selectedBtnBlock = ^(UIButton *button) {
-         NSLog(@"当前点击的按钮的标题是 %@",button.titleLabel.text);
-    };
-    [self.view addSubview:btnsView];
+    _tableView = [[UITableView alloc]init];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
     
- }
-
-#pragma mark -- AAButtonsViewDelegate
-- (void)aa_ButtonsViewDidSelectedButtonWithTheButton:(UIButton *)selectedButton {
-    NSLog(@"代理有没有再执行了");
+    _tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[self configureTheConstraintArrayWithItem:_tableView toItem:self.view]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = AAGrayColor;
+    UILabel *sectionTitleLabel = [[UILabel alloc]init];
+    sectionTitleLabel.text = @"对齐方式";
+    sectionTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    sectionTitleLabel.textAlignment = NSTextAlignmentCenter;
+    sectionTitleLabel.textColor = [UIColor purpleColor];
+    [view addSubview:sectionTitleLabel];
+    
+    sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addConstraints:[self configureTheConstraintArrayWithItem:sectionTitleLabel toItem:view]];
+    return view;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+    }
+    cell.textLabel.text = self.cellTitleArr[indexPath.section][indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SecondViewController *vc = [[SecondViewController alloc]init];
+    vc.buttonsViewLayoutType = indexPath.row;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2{
+    return  @[[NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeLeft
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeLeft
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeRight
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeRight
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeTop
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeTop
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeBottom
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeBottom
+                                          multiplier:1.0
+                                            constant:0],
+              
+              ];
+}
+
+- (NSArray *)cellTitleArr {
+    if (!_cellTitleArr) {
+        _cellTitleArr = @[
+                          @[@"AAButtonsViewLayoutTypeOrderly",
+                            @"AAButtonsViewLayoutTypeStaggerly"]
+                          ];
+    }
+    return _cellTitleArr;
+}
+
 
 
 @end

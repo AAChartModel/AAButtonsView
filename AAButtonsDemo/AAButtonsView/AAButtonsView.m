@@ -8,9 +8,7 @@
 
 #import "AAButtonsView.h"
 #define AAScreenWidth    [UIScreen mainScreen].bounds.size.width
-@implementation AAButtonsView {
-    
-}
+@implementation AAButtonsView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -44,14 +42,11 @@
     }
 }
 
-
-
 - (void)SetUpBasicStyle {
     self.btnLayerCornerRadius = 3;
     self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
     self.btnFontSize = 11;
  }
-
 
 - (void)setUpTheOriginalView {
     float btnX ;
@@ -59,7 +54,7 @@
     if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
         btnX = 20;
         btnY = 20;
-        for(int i = 0; i < self.btnsTitleArr.count; i++) {
+        for (int i = 0; i < self.btnsTitleArr.count; i++) {
             //宽度自适应
             CGFloat btnWidth;
             if (AAScreenWidth>320) {
@@ -83,18 +78,13 @@
                                                      buttonSelected:selected
                                                           buttonTag:i];
             btnX = CGRectGetMaxX(button.frame)+10;
-            
-            
         }
-    }else {
+    } else {
         btnX = 15;
         btnY = 17+10;
-        for(int i = 0; i < self.btnsTitleArr.count; i++){
-            
+        for(int i = 0; i < self.btnsTitleArr.count; i++) {
             //宽度自适应
-            NSDictionary *fontDict = @{
-                                       NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]
-                                       };
+            NSDictionary *fontDict = @{NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]};
             CGRect frame_W = [self.btnsTitleArr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                                    attributes:fontDict
@@ -102,7 +92,7 @@
             
             if (btnX+frame_W.size.width+20>AAScreenWidth-15) {
                 btnX = 15;
-                btnY += 55;
+                btnY += 35;
             }
             NSString *btnTitle = self.btnsTitleArr[i];
             
@@ -113,17 +103,16 @@
             
             UIButton *button =  [self configureTheButtonsWithButtonX:btnX
                                                              buttonY:btnY
-                                                         buttonWidth:frame_W.size.width
+                                                         buttonWidth:frame_W.size.width+10
                                                          buttonTitle:btnTitle
                                                       buttonSelected:selected
                                                            buttonTag:i];
-            btnX = CGRectGetMaxX(button.frame)+10;
+            btnX = CGRectGetMaxX(button.frame)+5;
             
         }
     }
     
 }
-
 
 - (UIButton *)configureTheButtonsWithButtonX:(CGFloat)btnX
                                      buttonY:(CGFloat)btnY
@@ -157,7 +146,6 @@
     } else {
         [self.selectedBtnDelegate aa_buttonsViewDidSelectedButtonWithTheButton:sender];
     }
-    
 }
 
 - (void)changeTheSelectedButtonStyleWithSelectedButton:(UIButton *)selectedBtn {
