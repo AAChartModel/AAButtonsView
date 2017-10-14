@@ -8,8 +8,10 @@
 
 #import "SecondViewController.h"
 #import "AAButtonsView.h"
-@interface SecondViewController ()<AAButtonsViewDelegate>
-
+@interface SecondViewController ()<AAButtonsViewDelegate>{
+    AAButtonsView *_btnsView;
+}
+@property (nonatomic, copy) NSString *selectedString;
 @end
 
 @implementation SecondViewController
@@ -18,13 +20,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUpTheButtonsView];
+    _selectedString = @"五音不全";
 
 }
 
 - (void)setUpTheButtonsView {
     AAButtonsView *btnsView = [[AAButtonsView alloc]init];
-    btnsView.backgroundColor = [UIColor whiteColor];
-    btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
+//    btnsView.backgroundColor = [UIColor whiteColor];
+    btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-300);
     btnsView.selectedBtnDelegate = self;
     btnsView.layoutType = self.buttonsViewLayoutType;
     NSArray *wholeContentArr;
@@ -84,14 +87,37 @@
                                @"看火人"];
     }
     
-    btnsView.selectedBtnsTitleArr = selectedContentArr;
+    //    btnsView.selectedBtnsTitleArr = selectedContentArr;// NOTE:属性selectedBtnsTitleArr的设置必须在btnsTitleArr设置的前面
     btnsView.btnsTitleArr = wholeContentArr;
     btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-    
+    __weak typeof(self)weakSelf = self;
     btnsView.selectedBtnBlock = ^(UIButton *button) {
         NSLog(@"当前点击的按钮的标题是 %@",button.titleLabel.text);
-        
+        [_btnsView removeFromSuperview];
 
+ 
+        _btnsView = [[AAButtonsView alloc]init];
+        
+        if (weakSelf.buttonsViewLayoutType == 0) {
+            _btnsView.supppotMultipleSelection = NO;
+        } else {
+            _btnsView.supppotMultipleSelection = YES;
+        }
+         _btnsView.frame = CGRectMake(0, 350, weakSelf.view.frame.size.width, 350);
+        _btnsView.selectedBtnDelegate = weakSelf;
+        _btnsView.layoutType = weakSelf.buttonsViewLayoutType;
+        NSArray *wholeContentArr;
+        NSArray *selectedContentArr;
+        wholeContentArr = @[@"基本信息",@"客户开发",@"返款记录",@"铺垫记录",@"顾客上门",@"顾客充值",@"结算记录",@"诊疗记录",@"回访计划",@"回访列表",@"开发记录",@"优惠记录"];
+//        selectedContentArr = @[@"元旦",@"中秋",@"国庆节",@"端午",@"春节",@"基本信息",@"铺垫记录",@"顾客充值",@"回访列表",@"结算记录",@"优惠记录"];
+        selectedContentArr = @[_selectedString];
+        _btnsView.selectedBtnBlock = ^(UIButton *button) {
+        _selectedString = button.titleLabel.text;
+        };
+        _btnsView.selectedBtnsTitleArr = selectedContentArr;
+        _btnsView.btnsTitleArr = wholeContentArr;
+        _btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        [weakSelf.view addSubview:_btnsView];
     };
     [self.view addSubview:btnsView];
 }

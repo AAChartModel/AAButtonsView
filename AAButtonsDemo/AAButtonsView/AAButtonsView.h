@@ -13,7 +13,9 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
     AAButtonsViewLayoutTypeStaggerly   //参差错落布局
 };
 
+
 @protocol AAButtonsViewDelegate <NSObject>
+
 @optional
 - (void)aa_buttonsViewDidSelectedButtonWithTheButton:(UIButton *)selectedButton;
 @end
@@ -35,6 +37,7 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
  视图上多个按钮的布局类型
  */
 @property (nonatomic, assign) AAButtonsViewLayoutType layoutType;
+
 
 /**
  视图上按钮被点击后执行的 block 方法
@@ -65,5 +68,11 @@ typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
  按钮字体颜色
  */
 @property (nonatomic, strong) UIColor *btnTextColor;
+
+
+/**
+ 是否支持多选
+ */
+@property (nonatomic, assign) BOOL supppotMultipleSelection;
 
 @end

@@ -11,6 +11,7 @@
 @interface AAButtonsView(){
     UIView *_btnsFatherView;
 }
+@property (nonatomic, strong) UIButton *justOneSelectedBtn;//记录仅仅支持单选的按钮 tag
 @end
 
 @implementation AAButtonsView
@@ -22,11 +23,6 @@
     }
     return self;
 }
-
-
-
-
-
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -45,7 +41,7 @@
 }
 
 - (void)setBtnsTitleArr:(NSArray *)btnsTitleArr {
-    if (_btnsTitleArr != btnsTitleArr) {
+    if (_btnsTitleArr != btnsTitleArr) { //此处可能有点问题,后续修改
         _btnsTitleArr = btnsTitleArr;
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self setUpTheOriginalView];
@@ -53,8 +49,10 @@
 }
 
 - (void)setUpBasicStyle {
+    [self dismissFromSuperView];
     self.btnLayerCornerRadius = 3;
     self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     self.btnFontSize = 11;
  }
 
@@ -71,6 +69,8 @@
     
     float btnX ;
     float btnY ;
+    
+  __block CGFloat btnsFatherViewHeight;
     if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
         btnX = 20;
         btnY = 20;
@@ -88,7 +88,7 @@
             }
             NSString *btnTitle = self.btnsTitleArr[i];
             BOOL selected = NO;
-            if (self.selectedBtnsTitleArr && [self.selectedBtnsTitleArr containsObject:btnTitle]) {
+            if ( [self.selectedBtnsTitleArr containsObject:btnTitle]) {
                 selected = YES;
             }
             UIButton *button = [self configureTheButtonsWithButtonX:btnX
@@ -97,10 +97,16 @@
                                                         buttonTitle:btnTitle
                                                      buttonSelected:selected
                                                           buttonTag:i];
+            
+            if ([self.selectedBtnsTitleArr containsObject:btnTitle]) {
+                self.justOneSelectedBtn = button;
+            }
+            
             btnX = CGRectGetMaxX(button.frame)+10;
             
-            if (i == self.btnsTitleArr.count-1) {
-                _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnY+25+15);
+            btnsFatherViewHeight = btnY+25+15;
+            if (i == self.btnsTitleArr.count-1) {//通过得到最后一个按钮的坐标来获得_btnsFatherView的高度
+                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width, btnsFatherViewHeight);
             }
         }
     } else {
@@ -121,7 +127,7 @@
             NSString *btnTitle = self.btnsTitleArr[i];
             
             BOOL selected = NO;
-            if (self.selectedBtnsTitleArr && [self.selectedBtnsTitleArr containsObject:btnTitle]) {
+            if ([self.selectedBtnsTitleArr containsObject:btnTitle]) {
                 selected = YES;
             }
             
@@ -131,16 +137,23 @@
                                                          buttonTitle:btnTitle
                                                       buttonSelected:selected
                                                            buttonTag:i];
+            
+            if ([self.selectedBtnsTitleArr containsObject:btnTitle]) {
+                self.justOneSelectedBtn = button;
+            }
             btnX = CGRectGetMaxX(button.frame)+5;
             
-            if (i == self.btnsTitleArr.count-1) {
-                 _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnY+25+15);
+            btnsFatherViewHeight = btnY+25+15;
+            if (i == self.btnsTitleArr.count-1) { //获得_btnsFatherView的高度
+                 _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width,btnsFatherViewHeight);
             }
             
         }
     }
     
-    
+    [UIView animateWithDuration:0.3 animations:^{
+        _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnsFatherViewHeight);
+    }];
     
 }
 
@@ -170,6 +183,12 @@
 }
 
 - (void)buttonOfAAButtonsViewWasClicked:(UIButton *)sender {
+    if (self.supppotMultipleSelection == NO) {
+//        [self swipeGestureEvent];
+        [self changeTheSelectedButtonStyleWithSelectedButton:self.justOneSelectedBtn];
+        self.justOneSelectedBtn = sender;
+    }
+    
     [self changeTheSelectedButtonStyleWithSelectedButton:sender];
     if (self.selectedBtnBlock) {
         self.selectedBtnBlock(sender);
@@ -179,16 +198,42 @@
 }
 
 - (void)changeTheSelectedButtonStyleWithSelectedButton:(UIButton *)selectedBtn {
+    
     if (selectedBtn.selected == NO) {
         selectedBtn.backgroundColor = self.btnSelectedColor;
         [selectedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [selectedBtn.layer setBorderColor:[self.btnSelectedColor CGColor]];
     } else {
+
+//        if (self.supppotMultipleSelection == NO) {
+//            self.justOneSelectedBtn = selectedBtn;
+//            self.justOneSelectedBtn.selected = YES;
+//        }
         selectedBtn.backgroundColor = [UIColor whiteColor];
         [selectedBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [selectedBtn.layer setBorderColor:[[UIColor grayColor] CGColor]];
     }
-        selectedBtn.selected = !selectedBtn.selected;
+    selectedBtn.selected = !selectedBtn.selected;
+}
+
+//轻触灰色半透明蒙版后消失
+- (void)dismissFromSuperView {
+    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureEvent)];
+    //    设置轻扫的方向向右
+    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionUp;
+    [self addGestureRecognizer:swipeGestureRight];
+}
+
+- (void)swipeGestureEvent {
+    [UIView animateWithDuration:0.3 animations:^{
+        _btnsFatherView.frame = CGRectMake(0, -(_btnsFatherView.frame.size.height), self.frame.size.width, _btnsFatherView.frame.size.height);
+    }];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backgroundColor= [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
 }
 
 @end
