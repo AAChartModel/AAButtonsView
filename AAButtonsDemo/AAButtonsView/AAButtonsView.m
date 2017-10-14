@@ -8,20 +8,30 @@
 
 #import "AAButtonsView.h"
 #define AAScreenWidth    [UIScreen mainScreen].bounds.size.width
+@interface AAButtonsView(){
+    UIView *_btnsFatherView;
+}
+@end
+
 @implementation AAButtonsView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self SetUpBasicStyle];
+        [self setUpBasicStyle];
     }
     return self;
 }
 
+
+
+
+
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self SetUpBasicStyle];
+        [self setUpBasicStyle];
     }
     return self;
 }
@@ -29,7 +39,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self SetUpBasicStyle];
+        [self setUpBasicStyle];
     }
     return self;
 }
@@ -42,13 +52,23 @@
     }
 }
 
-- (void)SetUpBasicStyle {
+- (void)setUpBasicStyle {
     self.btnLayerCornerRadius = 3;
     self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
     self.btnFontSize = 11;
  }
 
+
+
 - (void)setUpTheOriginalView {
+    _btnsFatherView = [[UIView alloc]init];
+    _btnsFatherView.backgroundColor = [UIColor whiteColor];
+//    _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    [self addSubview:_btnsFatherView];
+    
+    
+    
+    
     float btnX ;
     float btnY ;
     if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
@@ -78,6 +98,10 @@
                                                      buttonSelected:selected
                                                           buttonTag:i];
             btnX = CGRectGetMaxX(button.frame)+10;
+            
+            if (i == self.btnsTitleArr.count-1) {
+                _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnY+25+15);
+            }
         }
     } else {
         btnX = 15;
@@ -109,8 +133,14 @@
                                                            buttonTag:i];
             btnX = CGRectGetMaxX(button.frame)+5;
             
+            if (i == self.btnsTitleArr.count-1) {
+                 _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnY+25+15);
+            }
+            
         }
     }
+    
+    
     
 }
 
@@ -132,7 +162,7 @@
     [btn.layer setBorderWidth:0.5]; //边框宽度
     [btn addTarget:self action:@selector(buttonOfAAButtonsViewWasClicked:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = btnTag;
-    [self addSubview:btn];
+    [_btnsFatherView addSubview:btn];
     if (btnSelected == YES) {
         [self changeTheSelectedButtonStyleWithSelectedButton:btn];
     }

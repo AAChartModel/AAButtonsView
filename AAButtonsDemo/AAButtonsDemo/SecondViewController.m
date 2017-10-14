@@ -17,10 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setUpTheButtonsView];
+
+}
+
+- (void)setUpTheButtonsView {
     AAButtonsView *btnsView = [[AAButtonsView alloc]init];
     btnsView.backgroundColor = [UIColor whiteColor];
-        btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, 350);
+    btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     btnsView.selectedBtnDelegate = self;
     btnsView.layoutType = self.buttonsViewLayoutType;
     NSArray *wholeContentArr;
@@ -29,7 +33,7 @@
         self.title = @"Layout Orderly";
         wholeContentArr = @[@"基本信息",@"客户开发",@"返款记录",@"铺垫记录",@"顾客上门",@"顾客充值",@"结算记录",@"诊疗记录",@"回访计划",@"回访列表",@"开发记录",@"优惠记录"];
         selectedContentArr = @[@"元旦",@"中秋",@"国庆节",@"端午",@"春节",@"基本信息",@"铺垫记录",@"顾客充值",@"回访列表",@"结算记录",@"优惠记录"];
- 
+        
     } else {
         self.title = @"Layout Staggerly";
         wholeContentArr = @[@"AAChartKit",
@@ -79,12 +83,15 @@
                                @"Java",
                                @"看火人"];
     }
- 
+    
     btnsView.selectedBtnsTitleArr = selectedContentArr;
     btnsView.btnsTitleArr = wholeContentArr;
-
+    btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    
     btnsView.selectedBtnBlock = ^(UIButton *button) {
         NSLog(@"当前点击的按钮的标题是 %@",button.titleLabel.text);
+        
+
     };
     [self.view addSubview:btnsView];
 }
