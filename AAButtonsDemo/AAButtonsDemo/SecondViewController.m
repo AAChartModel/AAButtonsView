@@ -99,9 +99,9 @@
         _btnsView = [[AAButtonsView alloc]init];
         
         if (weakSelf.buttonsViewLayoutType == 0) {
-            _btnsView.supppotMultipleSelection = NO;
+            _btnsView.selectionType = AAButtonsViewSelectionSingle;
         } else {
-            _btnsView.supppotMultipleSelection = YES;
+            _btnsView.selectionType = AAButtonsViewSelectionMultiple;
         }
          _btnsView.frame = CGRectMake(0, 350, weakSelf.view.frame.size.width, 350);
         _btnsView.selectedBtnDelegate = weakSelf;
