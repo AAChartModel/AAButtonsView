@@ -66,7 +66,7 @@
     float btnY ;
     
     __block CGFloat btnsFatherViewHeight;
-    if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
+    if (self.layoutType == AAButtonsViewLayoutOrderly) {
         btnX = 20;
         btnY = AATopPadding;
         for (int i = 0; i < self.btnsTitleArr.count; i++) {

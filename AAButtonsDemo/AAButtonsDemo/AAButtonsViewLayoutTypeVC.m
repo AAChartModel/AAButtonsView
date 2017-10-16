@@ -32,7 +32,7 @@
     btnsView.layoutType = self.buttonsViewLayoutType;
     NSArray *wholeContentArr;
     NSArray *selectedContentArr;
-    if (self.buttonsViewLayoutType == AAButtonsViewLayoutTypeOrderly) {
+    if (self.buttonsViewLayoutType == AAButtonsViewLayoutOrderly) {
         self.title = @"Layout Orderly";
         wholeContentArr = @[@"基本信息",@"客户开发",@"返款记录",@"铺垫记录",@"顾客上门",@"顾客充值",@"结算记录",@"诊疗记录",@"回访计划",@"回访列表",@"开发记录",@"优惠记录"];
         selectedContentArr = @[@"元旦",@"中秋",@"国庆节",@"端午",@"春节",@"基本信息",@"铺垫记录",@"顾客充值",@"回访列表",@"结算记录",@"优惠记录"];

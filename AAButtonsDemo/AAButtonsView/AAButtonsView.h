@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 typedef void(^AAButtonsViewSelectedButtonBlock)(UIButton *button);
 
-typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
-    AAButtonsViewLayoutTypeOrderly = 0,//左右上下对齐
-    AAButtonsViewLayoutTypeStaggerly   //参差错落布局
+typedef NS_ENUM(NSInteger,AAButtonsViewLayout) {
+    AAButtonsViewLayoutOrderly = 0,//左右上下对齐
+    AAButtonsViewLayoutStaggerly   //参差错落布局
 };
 
 typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
 /**
  视图上多个按钮的布局类型
  */
-@property (nonatomic, assign) AAButtonsViewLayoutType layoutType;
+@property (nonatomic, assign) AAButtonsViewLayout layoutType;
 
 /**
  按钮选项类型

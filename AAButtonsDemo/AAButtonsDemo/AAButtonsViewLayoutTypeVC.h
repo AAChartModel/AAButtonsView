@@ -14,6 +14,6 @@
 /**
  视图上多个按钮的布局类型
  */
-@property (nonatomic, assign) AAButtonsViewLayoutType buttonsViewLayoutType;
+@property (nonatomic, assign) AAButtonsViewLayout buttonsViewLayoutType;
 
 @end

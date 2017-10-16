@@ -26,7 +26,7 @@
     AAButtonsView *btnsView = [[AAButtonsView alloc]init];
     //    btnsView.backgroundColor = [UIColor whiteColor];
     btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-300);
-    btnsView.layoutType = AAButtonsViewLayoutTypeStaggerly;
+    btnsView.layoutType = AAButtonsViewLayoutStaggerly;
     btnsView.selectionType = self.buttonsViewSelectionType;
     NSArray *wholeContentArr;
     NSArray *selectedContentArr;
