@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AAButtonsView.h"
 #import "SecondViewController.h"
+#import "AAButtonsViewSelectionTypeVC.h"
 #define AAGrayColor [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1.0]
 @interface ViewController ()<AAButtonsViewDelegate,UITableViewDelegate,UITableViewDataSource> {
     UITableView *_tableView;
@@ -33,7 +34,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -48,7 +49,8 @@
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = AAGrayColor;
     UILabel *sectionTitleLabel = [[UILabel alloc]init];
-    sectionTitleLabel.text = @"对齐方式";
+    NSArray *sectionTitleArr = @[@"对齐方式",@"单选多选"];
+    sectionTitleLabel.text = sectionTitleArr[section];
     sectionTitleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     sectionTitleLabel.textAlignment = NSTextAlignmentCenter;
     sectionTitleLabel.textColor = [UIColor purpleColor];
@@ -70,9 +72,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SecondViewController *vc = [[SecondViewController alloc]init];
-    vc.buttonsViewLayoutType = indexPath.row;
-    [self.navigationController pushViewController:vc animated:YES];
+    switch (indexPath.section) {
+        case 0: {
+            SecondViewController *vc = [[SecondViewController alloc]init];
+            vc.buttonsViewLayoutType = indexPath.row;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        case 1: {
+            AAButtonsViewSelectionTypeVC *selectionTypeVC = [[AAButtonsViewSelectionTypeVC alloc]init];
+            selectionTypeVC.buttonsViewSelectionType = indexPath.row;
+            [self.navigationController pushViewController:selectionTypeVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+    
 }
 
 - (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2{
@@ -104,7 +121,7 @@
                                            attribute:NSLayoutAttributeBottom
                                           multiplier:1.0
                                             constant:0],
-             
+              
               ];
 }
 
@@ -112,7 +129,10 @@
     if (!_cellTitleArr) {
         _cellTitleArr = @[
                           @[@"AAButtonsViewLayoutTypeOrderly",
-                            @"AAButtonsViewLayoutTypeStaggerly"]
+                            @"AAButtonsViewLayoutTypeStaggerly"],
+                          
+                          @[@"AAButtonsViewSelectionSingle",
+                            @"AAButtonsViewSelectionMultiple"],
                           ];
     }
     return _cellTitleArr;
@@ -121,3 +141,4 @@
 
 
 @end
+

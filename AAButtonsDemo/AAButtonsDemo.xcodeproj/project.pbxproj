@@ -17,6 +17,7 @@
 		277A0E5B1F3060B600F6E9CB /* AAButtonsDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E5A1F3060B600F6E9CB /* AAButtonsDemoTests.m */; };
 		277A0E661F3060B600F6E9CB /* AAButtonsDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E651F3060B600F6E9CB /* AAButtonsDemoUITests.m */; };
 		277A0E751F30610600F6E9CB /* AAButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E741F30610600F6E9CB /* AAButtonsView.m */; };
+		277F177C1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 277F177B1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		277A0E671F3060B600F6E9CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277A0E731F30610600F6E9CB /* AAButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAButtonsView.h; sourceTree = "<group>"; };
 		277A0E741F30610600F6E9CB /* AAButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAButtonsView.m; sourceTree = "<group>"; };
+		277F177A1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAButtonsViewSelectionTypeVC.h; sourceTree = "<group>"; };
+		277F177B1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAButtonsViewSelectionTypeVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				277A0E471F3060B500F6E9CB /* ViewController.m */,
 				276570971F8CB75800DAAE89 /* SecondViewController.h */,
 				276570981F8CB75800DAAE89 /* SecondViewController.m */,
+				277F177A1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.h */,
+				277F177B1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m */,
 				277A0E491F3060B600F6E9CB /* Main.storyboard */,
 				277A0E4C1F3060B600F6E9CB /* Assets.xcassets */,
 				277A0E4E1F3060B600F6E9CB /* LaunchScreen.storyboard */,
@@ -295,6 +300,7 @@
 				277A0E481F3060B500F6E9CB /* ViewController.m in Sources */,
 				277A0E451F3060B500F6E9CB /* AppDelegate.m in Sources */,
 				277A0E751F30610600F6E9CB /* AAButtonsView.m in Sources */,
+				277F177C1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m in Sources */,
 				277A0E421F3060B500F6E9CB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

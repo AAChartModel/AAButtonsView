@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
 /**
  按钮选项类型
  */
-@property (nonatomic, assign) AAButtonsViewLayoutType selectionType;
+@property (nonatomic, assign) AAButtonsViewSelection selectionType;
 
 
 /**
