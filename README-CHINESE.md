@@ -2,11 +2,12 @@
 ## 功能特点
 
 
-- [x]  支持视图上按钮点击事件回调,可自由选择代理事件和 block 回调
-- [x]  支持视图上下左右布局和流式布局样式
-- [x]  支持自定义视图按钮样式
-- [x] 支持记忆上一次点击按钮功能
-- [x]  支持 iOS 6及以上环境
+- [x]  支持视图上按钮`点击事件回调`,可自由选择`代理`事件和 `block`回调
+- [x]  支持视图`上下左右布局`和`流式布局`样式
+- [x]  支持自由设置视图`单选`或`多选`功能
+- [x]  支持`自定义`视图按钮样式
+- [x]  支持`记忆`上一次点击按钮功能
+- [x]  支持` iOS 6`及以上环境
 
 
 
@@ -19,11 +20,13 @@ AAButtonsViewLayoutStaggerly   //参差错落布局
 };
 ```
 
-##### 左右上下对齐
+### 左右上下对齐
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/上下左右对齐.png)
 
 
 
-##### 参差错落布局
+### 参差错落布局
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/参差错落样式.png)
 
 
 视图支持的选择类型 `AAButtonsViewSelection`
@@ -34,9 +37,21 @@ AAButtonsViewSelectionSingle = 0, //仅仅支持单选
 AAButtonsViewSelectionMultiple    //支持多选
 };
 ```
-##### 仅仅支持单选
+### 仅仅支持单选
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/单选按钮.png)
+### 支持多选
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/多选按钮.png)
 
-##### 支持多选
+## 安装
+### 手动安装
+1. 下载`AAButtonsView`文件夹内的所有内容
+2. 将`AAButtonsView`内的源文件拖放添加至你的工程中
+3. 导入`AAButtonsView.h`
+
+### CocoaPods导入
+1. 在 `Podfile` 中添加` pod 'AAButtonsView'`。
+2. 执行 `pod install` 或 `pod update`。
+3. 导入` AAButtonsView.h`。
 
 ### 作者
 An An 
