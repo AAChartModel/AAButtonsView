@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		276570991F8CB75800DAAE89 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276570981F8CB75800DAAE89 /* SecondViewController.m */; };
+		276570991F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 276570981F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.m */; };
 		277A0E421F3060B500F6E9CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E411F3060B500F6E9CB /* main.m */; };
 		277A0E451F3060B500F6E9CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E441F3060B500F6E9CB /* AppDelegate.m */; };
 		277A0E481F3060B500F6E9CB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A0E471F3060B500F6E9CB /* ViewController.m */; };
@@ -38,8 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		276570971F8CB75800DAAE89 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		276570981F8CB75800DAAE89 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		276570971F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAButtonsViewLayoutTypeVC.h; sourceTree = "<group>"; };
+		276570981F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAButtonsViewLayoutTypeVC.m; sourceTree = "<group>"; };
 		277A0E3D1F3060B500F6E9CB /* AAButtonsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAButtonsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A0E411F3060B500F6E9CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		277A0E431F3060B500F6E9CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 				277A0E441F3060B500F6E9CB /* AppDelegate.m */,
 				277A0E461F3060B500F6E9CB /* ViewController.h */,
 				277A0E471F3060B500F6E9CB /* ViewController.m */,
-				276570971F8CB75800DAAE89 /* SecondViewController.h */,
-				276570981F8CB75800DAAE89 /* SecondViewController.m */,
+				276570971F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.h */,
+				276570981F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.m */,
 				277F177A1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.h */,
 				277F177B1F94AF220042F19A /* AAButtonsViewSelectionTypeVC.m */,
 				277A0E491F3060B600F6E9CB /* Main.storyboard */,
@@ -296,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				276570991F8CB75800DAAE89 /* SecondViewController.m in Sources */,
+				276570991F8CB75800DAAE89 /* AAButtonsViewLayoutTypeVC.m in Sources */,
 				277A0E481F3060B500F6E9CB /* ViewController.m in Sources */,
 				277A0E451F3060B500F6E9CB /* AppDelegate.m in Sources */,
 				277A0E751F30610600F6E9CB /* AAButtonsView.m in Sources */,

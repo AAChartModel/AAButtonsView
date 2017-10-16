@@ -1,20 +1,20 @@
 //
-//  SecondViewController.m
+//  AAButtonsViewLayoutTypeVC.m
 //  AAButtonsDemo
 //
 //  Created by An An on 2017/10/10.
 //  Copyright © 2017年 An An. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "AAButtonsViewLayoutTypeVC.h"
 #import "AAButtonsView.h"
-@interface SecondViewController ()<AAButtonsViewDelegate>{
+@interface AAButtonsViewLayoutTypeVC ()<AAButtonsViewDelegate>{
     AAButtonsView *_btnsView;
 }
 @property (nonatomic, copy) NSString *selectedString;
 @end
 
-@implementation SecondViewController
+@implementation AAButtonsViewLayoutTypeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

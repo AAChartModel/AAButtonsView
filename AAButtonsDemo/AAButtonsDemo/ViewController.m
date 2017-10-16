@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AAButtonsView.h"
-#import "SecondViewController.h"
+#import "AAButtonsViewLayoutTypeVC.h"
 #import "AAButtonsViewSelectionTypeVC.h"
 #define AAGrayColor [UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1.0]
 @interface ViewController ()<AAButtonsViewDelegate,UITableViewDelegate,UITableViewDataSource> {
@@ -74,7 +74,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0: {
-            SecondViewController *vc = [[SecondViewController alloc]init];
+            AAButtonsViewLayoutTypeVC *vc = [[AAButtonsViewLayoutTypeVC alloc]init];
             vc.buttonsViewLayoutType = indexPath.row;
             [self.navigationController pushViewController:vc animated:YES];
         }

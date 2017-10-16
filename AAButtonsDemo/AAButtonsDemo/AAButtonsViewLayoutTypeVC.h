@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  AAButtonsViewLayoutTypeVC.h
 //  AAButtonsDemo
 //
 //  Created by An An on 2017/10/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AAButtonsView.h"
 
-@interface SecondViewController : UIViewController
+@interface AAButtonsViewLayoutTypeVC : UIViewController
 
 /**
  视图上多个按钮的布局类型
