@@ -79,5 +79,10 @@ typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
  */
 @property (nonatomic, strong) UIColor *btnTextColor;
 
+/**
+ 按钮边缘线颜色
+ */
+@property (nonatomic, strong) UIColor *btnBorderColor;
+
 
 @end

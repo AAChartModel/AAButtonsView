@@ -111,13 +111,15 @@
         wholeContentArr = @[@"基本信息",@"客户开发",@"返款记录",@"铺垫记录",@"顾客上门",@"顾客充值",@"结算记录",@"诊疗记录",@"回访计划",@"回访列表",@"开发记录",@"优惠记录"];
 //        selectedContentArr = @[@"元旦",@"中秋",@"国庆节",@"端午",@"春节",@"基本信息",@"铺垫记录",@"顾客充值",@"回访列表",@"结算记录",@"优惠记录"];
         selectedContentArr = @[_selectedString];
-        _btnsView.selectedBtnBlock = ^(UIButton *button) {
-        _selectedString = button.titleLabel.text;
-        };
+        _btnsView.btnLayerCornerRadius = 25/2;
         _btnsView.selectedBtnsTitleArr = selectedContentArr;
         _btnsView.btnsTitleArr = wholeContentArr;
         _btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
         [weakSelf.view addSubview:_btnsView];
+        
+        _btnsView.selectedBtnBlock = ^(UIButton *button) {
+            _selectedString = button.titleLabel.text;
+        };
     };
     [self.view addSubview:btnsView];
 }

@@ -8,6 +8,7 @@
 
 #import "AAButtonsView.h"
 #define AAScreenWidth    [UIScreen mainScreen].bounds.size.width
+#define AATopPadding 21
 @interface AAButtonsView(){
     UIView *_btnsFatherView;
 }
@@ -41,37 +42,33 @@
 }
 
 - (void)setBtnsTitleArr:(NSArray *)btnsTitleArr {
-    if (_btnsTitleArr != btnsTitleArr) { //此处可能有点问题,后续修改
+//    if (_btnsTitleArr != btnsTitleArr) { //此处可能有点问题,后续修改
         _btnsTitleArr = btnsTitleArr;
-        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self setUpTheOriginalView];
-    }
+//    }
 }
 
 - (void)setUpBasicStyle {
-//    [self dismissFromSuperView];
+    self.backgroundColor = [UIColor whiteColor];
     self.btnLayerCornerRadius = 3;
     self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
-//    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-//    self.backgroundColor = [UIColor whiteColor];
     self.btnFontSize = 11;
+    self.btnTextColor = [UIColor darkGrayColor];
+    self.btnBorderColor = [UIColor lightGrayColor];
 }
 
 
 
 - (void)setUpTheOriginalView {
-//    _btnsFatherView = [[UIView alloc]init];
-//    _btnsFatherView.backgroundColor = [UIColor whiteColor];
-//    //    _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-//    [self addSubview:_btnsFatherView];
-//
+    
     float btnX ;
     float btnY ;
     
     __block CGFloat btnsFatherViewHeight;
     if (self.layoutType == AAButtonsViewLayoutTypeOrderly) {
         btnX = 20;
-        btnY = 20;
+        btnY = AATopPadding;
         for (int i = 0; i < self.btnsTitleArr.count; i++) {
             //宽度自适应
             CGFloat btnWidth;
@@ -102,15 +99,14 @@
             
             btnX = CGRectGetMaxX(button.frame)+10;
             
-            btnsFatherViewHeight = btnY+25+15;
+            btnsFatherViewHeight = btnY+25+AATopPadding;
             if (i == self.btnsTitleArr.count-1) {//通过得到最后一个按钮的坐标来获得_btnsFatherView的高度
-//                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width, btnsFatherViewHeight);
                 self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, AAScreenWidth, btnsFatherViewHeight);
             }
         }
     } else {
         btnX = 15;
-        btnY = 17+10;
+        btnY = AATopPadding;
         for(int i = 0; i < self.btnsTitleArr.count; i++) {
             //宽度自适应
             NSDictionary *fontDict = @{NSFontAttributeName:[UIFont systemFontOfSize:self.btnFontSize+3]};
@@ -142,20 +138,14 @@
             }
             btnX = CGRectGetMaxX(button.frame)+5;
             
-            btnsFatherViewHeight = btnY+25+15;
+            btnsFatherViewHeight = btnY+25+AATopPadding;
             if (i == self.btnsTitleArr.count-1) { //获得_btnsFatherView的高度
-//                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width,btnsFatherViewHeight);
                 self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, AAScreenWidth, btnsFatherViewHeight);
-//                self.frame = CGRectMake(100, 100, 200, 300);
             }
             
         }
     }
     
-//    [UIView animateWithDuration:0.3 animations:^{
-//        _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnsFatherViewHeight);
-//    }];
-//
 }
 
 - (UIButton *)configureTheButtonsWithButtonX:(CGFloat)btnX
@@ -168,16 +158,15 @@
     btn.frame = CGRectMake(btnX, btnY, btnWidth, 25);
     btn.backgroundColor = [UIColor whiteColor];
     [btn setTitle:btnTitle forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [btn setTitleColor:self.btnTextColor forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:self.btnFontSize];
-    btn.layer.cornerRadius = 5;
+    btn.layer.cornerRadius = self.btnLayerCornerRadius;
     btn.layer.masksToBounds = YES;
-    [btn.layer setBorderColor:[[UIColor  grayColor] CGColor]];//边框颜色
+    [btn.layer setBorderColor:[self.btnBorderColor CGColor]];//边框颜色
     [btn.layer setBorderWidth:0.5]; //边框宽度
     [btn addTarget:self action:@selector(buttonOfAAButtonsViewWasClicked:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = btnTag;
     [self addSubview:btn];
-//    [_btnsFatherView addSubview:btn];
     if (btnSelected == YES) {
         [self changeTheSelectedButtonStyleWithSelectedButton:btn];
     }
@@ -186,12 +175,12 @@
 
 - (void)buttonOfAAButtonsViewWasClicked:(UIButton *)sender {
     if (self.selectionType == AAButtonsViewSelectionSingle) {
-        //        [self swipeGestureEvent];
         [self changeTheSelectedButtonStyleWithSelectedButton:self.justOneSelectedBtn];
         self.justOneSelectedBtn = sender;
     }
     
     [self changeTheSelectedButtonStyleWithSelectedButton:sender];
+    
     if (self.selectedBtnBlock) {
         self.selectedBtnBlock(sender);
     } else {
@@ -213,24 +202,7 @@
     selectedBtn.selected = !selectedBtn.selected;
 }
 
-////轻触灰色半透明蒙版后消失
-//- (void)dismissFromSuperView {
-//    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureEvent)];
-//    //    设置轻扫的方向向右
-//    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionUp;
-//    [self addGestureRecognizer:swipeGestureRight];
-//}
-//
-//- (void)swipeGestureEvent {
-//    [UIView animateWithDuration:0.3 animations:^{
-//        _btnsFatherView.frame = CGRectMake(0, -(_btnsFatherView.frame.size.height), self.frame.size.width, _btnsFatherView.frame.size.height);
-//    }];
-//
-//    [UIView animateWithDuration:0.3 animations:^{
-//        self.backgroundColor= [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-//    } completion:^(BOOL finished) {
-//        [self removeFromSuperview];
-//    }];
-//}
 
 @end
+
+
