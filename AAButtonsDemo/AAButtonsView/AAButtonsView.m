@@ -49,21 +49,22 @@
 }
 
 - (void)setUpBasicStyle {
-    [self dismissFromSuperView];
+//    [self dismissFromSuperView];
     self.btnLayerCornerRadius = 3;
     self.btnSelectedColor = [UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0];//app主色调
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//    self.backgroundColor = [UIColor whiteColor];
     self.btnFontSize = 11;
 }
 
 
 
 - (void)setUpTheOriginalView {
-    _btnsFatherView = [[UIView alloc]init];
-    _btnsFatherView.backgroundColor = [UIColor whiteColor];
-    //    _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    [self addSubview:_btnsFatherView];
-  
+//    _btnsFatherView = [[UIView alloc]init];
+//    _btnsFatherView.backgroundColor = [UIColor whiteColor];
+//    //    _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+//    [self addSubview:_btnsFatherView];
+//
     float btnX ;
     float btnY ;
     
@@ -103,7 +104,8 @@
             
             btnsFatherViewHeight = btnY+25+15;
             if (i == self.btnsTitleArr.count-1) {//通过得到最后一个按钮的坐标来获得_btnsFatherView的高度
-                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width, btnsFatherViewHeight);
+//                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width, btnsFatherViewHeight);
+                self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, AAScreenWidth, btnsFatherViewHeight);
             }
         }
     } else {
@@ -142,16 +144,18 @@
             
             btnsFatherViewHeight = btnY+25+15;
             if (i == self.btnsTitleArr.count-1) { //获得_btnsFatherView的高度
-                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width,btnsFatherViewHeight);
+//                _btnsFatherView.frame = CGRectMake(0, -btnsFatherViewHeight, self.frame.size.width,btnsFatherViewHeight);
+                self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, AAScreenWidth, btnsFatherViewHeight);
+//                self.frame = CGRectMake(100, 100, 200, 300);
             }
             
         }
     }
     
-    [UIView animateWithDuration:0.3 animations:^{
-        _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnsFatherViewHeight);
-    }];
-    
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _btnsFatherView.frame = CGRectMake(0, 0, self.frame.size.width, btnsFatherViewHeight);
+//    }];
+//
 }
 
 - (UIButton *)configureTheButtonsWithButtonX:(CGFloat)btnX
@@ -172,7 +176,8 @@
     [btn.layer setBorderWidth:0.5]; //边框宽度
     [btn addTarget:self action:@selector(buttonOfAAButtonsViewWasClicked:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = btnTag;
-    [_btnsFatherView addSubview:btn];
+    [self addSubview:btn];
+//    [_btnsFatherView addSubview:btn];
     if (btnSelected == YES) {
         [self changeTheSelectedButtonStyleWithSelectedButton:btn];
     }
@@ -208,24 +213,24 @@
     selectedBtn.selected = !selectedBtn.selected;
 }
 
-//轻触灰色半透明蒙版后消失
-- (void)dismissFromSuperView {
-    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureEvent)];
-    //    设置轻扫的方向向右
-    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionUp;
-    [self addGestureRecognizer:swipeGestureRight];
-}
-
-- (void)swipeGestureEvent {
-    [UIView animateWithDuration:0.3 animations:^{
-        _btnsFatherView.frame = CGRectMake(0, -(_btnsFatherView.frame.size.height), self.frame.size.width, _btnsFatherView.frame.size.height);
-    }];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.backgroundColor= [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    } completion:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
-}
+////轻触灰色半透明蒙版后消失
+//- (void)dismissFromSuperView {
+//    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureEvent)];
+//    //    设置轻扫的方向向右
+//    swipeGestureRight.direction = UISwipeGestureRecognizerDirectionUp;
+//    [self addGestureRecognizer:swipeGestureRight];
+//}
+//
+//- (void)swipeGestureEvent {
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _btnsFatherView.frame = CGRectMake(0, -(_btnsFatherView.frame.size.height), self.frame.size.width, _btnsFatherView.frame.size.height);
+//    }];
+//
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.backgroundColor= [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+//    } completion:^(BOOL finished) {
+//        [self removeFromSuperview];
+//    }];
+//}
 
 @end

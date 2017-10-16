@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 typedef void(^AAButtonsViewSelectedButtonBlock)(UIButton *button);
+
 typedef NS_ENUM(NSInteger,AAButtonsViewLayoutType) {
     AAButtonsViewLayoutTypeOrderly = 0,//左右上下对齐
     AAButtonsViewLayoutTypeStaggerly   //参差错落布局

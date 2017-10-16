@@ -89,7 +89,7 @@
     
     //    btnsView.selectedBtnsTitleArr = selectedContentArr;// NOTE:属性selectedBtnsTitleArr的设置必须在btnsTitleArr设置的前面
     btnsView.btnsTitleArr = wholeContentArr;
-    btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+//    btnsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     __weak typeof(self)weakSelf = self;
     btnsView.selectedBtnBlock = ^(UIButton *button) {
         NSLog(@"当前点击的按钮的标题是 %@",button.titleLabel.text);
