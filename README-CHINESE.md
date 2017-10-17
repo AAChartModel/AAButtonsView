@@ -21,7 +21,49 @@
 - [x]  支持`记忆`上一次点击按钮功能
 - [x]  支持` iOS 6`及以上环境
 
-
+### 使用方法
+``` objective-c
+    AAButtonsView *btnsView = [[AAButtonsView alloc]init];
+    btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-300);
+    btnsView.backgroundColor = [UIColor lightGrayColor];
+    btnsView.layoutType = AAButtonsViewLayoutStaggerly;//设置按钮的布局样式为流式布局
+    btnsView.selectionType = AAButtonsViewSelectionMultiple;//设置视图的按钮是多选类型
+    NSArray *wholeContentArr = @[@"AAChartKit",
+                                 @"AAChartKit-Swift",
+                                 @"AAButtonsView",
+                                 @"Python",
+                                 @"Java",
+                                 @"AAUniversalTableViewCell",
+                                 @"AACategory",
+                                 @"AAMapStudio",
+                                 @"AAChartKit-Slim",
+                                 @"AATextWatchdog",
+                                 @"风之旅人",
+                                 @"闪客",
+                                 @"忍者龙剑传",
+                                 @"合金弹头",
+                                 @"机械迷城",
+                                 @"世界大战の勇敢的心",
+                                 @"Frame",
+                                 @"纸境",
+                                 @"Limbo",
+                                 @"inside",
+                                 @"神秘海域",
+                                 @"最后生还者",
+                                 @"仁王",
+                                 @"血源",
+                                 @"孤岛危机",
+                                 @"看火人",
+                                 @"半条命",
+                                 @"饥荒"];
+    btnsView.btnsTitleArr = wholeContentArr;//设置视图上的按钮内容数组
+    [self.view addSubview:btnsView];
+    
+    btnsView.selectedBtnBlock = ^(UIButton *button) {//视图上按钮被点击的 block 回调事件
+        NSLog(@"当前点击的按钮的标题是 %@",button.titleLabel.text);
+        
+    };
+```
 
 ### 视图中多个按钮的对齐方式 `AAButtonsViewLayout`
 
