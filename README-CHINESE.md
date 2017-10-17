@@ -1,4 +1,15 @@
 # AAButtonsView
+[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE)
+[![](https://img.shields.io/badge/language-OC-green.svg)](https://github.com/AAChartModel/AAButtonsView)
+[![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAButtonsView)
+[![](https://img.shields.io/badge/support-Swift-orange.svg)](https://github.com/AAChartModel/AAButtonsView-Swift)
+[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAButtonsView/blob/master/README-CHINESE.md)
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAButtonsView)
+
+[中文文档](https://github.com/AAChartModel/AAButtonsView/blob/master/README-CHINESE.md)  |  [English Introduction](https://github.com/AAChartModel/AAButtonsView)
+[TOC]
+
 ## 功能特点
 
 
@@ -11,7 +22,7 @@
 
 
 
-视图中多个按钮的对齐方式 `AAButtonsViewLayout`
+### 视图中多个按钮的对齐方式 `AAButtonsViewLayout`
 
 ``` objective-c
 typedef NS_ENUM(NSInteger,AAButtonsViewLayout) {
@@ -20,16 +31,16 @@ AAButtonsViewLayoutStaggerly   //参差错落布局
 };
 ```
 
-### 左右上下对齐
+1. 左右上下对齐
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/上下左右对齐.png)
 
 
 
-### 参差错落布局
+2. 参差错落布局
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/参差错落样式.png)
 
 
-视图支持的选择类型 `AAButtonsViewSelection`
+### 视图支持的选择类型 `AAButtonsViewSelection`
 
 ``` objective-c
 typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
@@ -37,9 +48,9 @@ AAButtonsViewSelectionSingle = 0, //仅仅支持单选
 AAButtonsViewSelectionMultiple    //支持多选
 };
 ```
-### 仅仅支持单选
+1.  仅仅支持单选
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/单选按钮.png)
-### 支持多选
+2. 支持多选
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/多选按钮.png)
 
 ## 安装
@@ -53,7 +64,7 @@ AAButtonsViewSelectionMultiple    //支持多选
 2. 执行 `pod install` 或 `pod update`。
 3. 导入` AAButtonsView.h`。
 
-### 作者
+## 作者
 An An 
 ```java
 
@@ -87,9 +98,8 @@ An An
 
 
 
-### LICENSE
+## LICENSE
 
  AAButtonsView is CAAopyright (c) 2017 An An and released as open source under the attached [MIT LICENSE](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE).
-
 
 
