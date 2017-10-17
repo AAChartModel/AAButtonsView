@@ -8,6 +8,7 @@
 [![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAButtonsView)
 
 [中文文档](https://github.com/AAChartModel/AAButtonsView/blob/master/README-CHINESE.md)  |  [English Introduction](https://github.com/AAChartModel/AAButtonsView)
+
 [TOC]
 
 ## 功能特点
@@ -32,11 +33,11 @@ AAButtonsViewLayoutStaggerly   //参差错落布局
 ```
 
 1. 左右上下对齐
+
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/上下左右对齐.png)
 
-
-
 2. 参差错落布局
+
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/参差错落样式.png)
 
 
@@ -49,8 +50,11 @@ AAButtonsViewSelectionMultiple    //支持多选
 };
 ```
 1.  仅仅支持单选
+
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/单选按钮.png)
+
 2. 支持多选
+
 ![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/多选按钮.png)
 
 ## 安装
