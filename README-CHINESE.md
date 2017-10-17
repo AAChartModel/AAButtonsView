@@ -144,14 +144,13 @@ An An
 
 
 
-## 使用证书
+## 证书
 
- AAButtonsView is CAAopyright (c) 2017 An An and released as open source under the attached [MIT LICENSE](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE).
+ **AAButtonsView** 使用 [MIT LICENSE](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE)证书.
 
 ## 贡献者
 
-This project exists thanks to all the people who contribute. [[Contribute]](https://github.com/onevcat/AAButtonsView/blob/master/CONTRIBUTING.md).
-<a href="https://github.com/AAChartModel/AAButtonsView/graphs/contributors"><img src="https://opencollective.com/AAButtonsView/contributors.svg?width=890" /></a>
+ ![AnAn](https://avatars1.githubusercontent.com/u/16357599?s=40&v=4)
 
 ## 代办清单
 - [ ]  支持即时获得`AAButtonsView`动态高度
