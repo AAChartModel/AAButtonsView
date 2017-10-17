@@ -21,7 +21,43 @@
 - [x]  支持`记忆`上一次点击按钮功能
 - [x]  支持` iOS 6`及以上环境
 
-### 使用方法
+
+
+### 视图中多个按钮的对齐方式 `AAButtonsViewLayout`
+
+``` objective-c
+typedef NS_ENUM(NSInteger,AAButtonsViewLayout) {
+AAButtonsViewLayoutOrderly = 0,//左右上下对齐
+AAButtonsViewLayoutStaggerly   //参差错落布局
+};
+```
+
+1. 左右上下对齐
+
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/上下左右对齐.png)
+
+2. 参差错落布局
+
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/参差错落样式.png)
+
+
+### 视图支持的选择类型 `AAButtonsViewSelection`
+
+``` objective-c
+typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
+AAButtonsViewSelectionSingle = 0, //仅仅支持单选
+AAButtonsViewSelectionMultiple    //支持多选
+};
+```
+1.  仅仅支持单选
+
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/单选按钮.png)
+
+2. 支持多选
+
+![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/多选按钮.png)
+
+## 使用方法
 ``` objective-c
     AAButtonsView *btnsView = [[AAButtonsView alloc]init];
     btnsView.frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-300);
@@ -64,41 +100,6 @@
         
     };
 ```
-
-### 视图中多个按钮的对齐方式 `AAButtonsViewLayout`
-
-``` objective-c
-typedef NS_ENUM(NSInteger,AAButtonsViewLayout) {
-AAButtonsViewLayoutOrderly = 0,//左右上下对齐
-AAButtonsViewLayoutStaggerly   //参差错落布局
-};
-```
-
-1. 左右上下对齐
-
-![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/上下左右对齐.png)
-
-2. 参差错落布局
-
-![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/参差错落样式.png)
-
-
-### 视图支持的选择类型 `AAButtonsViewSelection`
-
-``` objective-c
-typedef NS_ENUM(NSInteger,AAButtonsViewSelection) {
-AAButtonsViewSelectionSingle = 0, //仅仅支持单选
-AAButtonsViewSelectionMultiple    //支持多选
-};
-```
-1.  仅仅支持单选
-
-![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/单选按钮.png)
-
-2. 支持多选
-
-![](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAButtonsViewImageResource/多选按钮.png)
-
 ## 安装
 ### 手动安装
 1. 下载`AAButtonsView`文件夹内的所有内容
@@ -146,7 +147,7 @@ An An
 
 ## 证书
 
- **AAButtonsView** 使用 [MIT LICENSE](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE)证书.
+ **AAButtonsView** 使用[MIT LICENSE](https://github.com/AAChartModel/AAButtonsView/blob/master/LICENSE)证书.
 
 ## 贡献者
 
