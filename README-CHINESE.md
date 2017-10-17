@@ -154,13 +154,13 @@ This project exists thanks to all the people who contribute. [[Contribute]](http
 <a href="https://github.com/AAChartModel/AAButtonsView/graphs/contributors"><img src="https://opencollective.com/AAButtonsView/contributors.svg?width=890" /></a>
 
 ## 代办清单
-- []  支持即时获得`AAButtonsView`动态高度
-- []  支持更多的按钮样式自定义选项
-- []  支持`AAButtonsViewLayout`自定义布局类
-- []  支持高效绘制按钮的圆角效果
-- []  支持`Cocoapods`导入
-- []  编写`AAButtonsView`的`Swift`版本
-- []  编写完整的English Introduction
+- [ ]  支持即时获得`AAButtonsView`动态高度
+- [ ]  支持更多的按钮样式自定义选项
+- [ ]  支持`AAButtonsViewLayout`自定义布局类
+- [ ]  支持高效绘制按钮的圆角效果
+- [ ]  支持`Cocoapods`导入
+- [ ]  编写`AAButtonsView`的`Swift`版本
+- [ ]  编写完整的English Introduction
 
 
 
